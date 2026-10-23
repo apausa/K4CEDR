@@ -20,11 +20,8 @@
 #ifndef k4GaudiCEDUtils_h
 #define k4GaudiCEDUtils_h 1
 
-// --- DD4hep ---
-#include "DD4hep/DD4hepUnits.h"
-#include "DD4hep/Detector.h"
-#include "DDRec/DetectorData.h"
-#include "DDRec/Vector3D.h"
+#include <fstream>
+#include <string>
 
 #include "edm4hep/Track.h"
 
@@ -66,11 +63,6 @@ std::ostream& info();
 std::ostream& warning();
 std::ostream& error();
 
-// structure for calculating the track length of given particles
-struct CalorimeterDrawParams {
-  double r_inner, delta_r, z_0, delta_z;
-};
-
 /**Helper struct for drawing collections*/
 struct DrawParameters {
   DrawParameters(const std::string& colName, int size, int marker, int layer)
@@ -80,17 +72,6 @@ struct DrawParameters {
   int Marker;
   int Layer;
 };
-
-CalorimeterDrawParams getCalorimeterParameters(dd4hep::Detector& theDetector, std::string name, bool selfCall = false);
-
-double calculateTrackLength(const CalorimeterDrawParams& barrel, const CalorimeterDrawParams& endcap, double x,
-                            double y, double z, double px, double py, double pz, double rel_X0 = 0.5);
-
-// get the outer extents of the tracker
-std::array<double, 2> getTrackerExtent(dd4hep::Detector& theDetector);
-
-// get the outer extents of the yoke
-std::array<double, 2> getYokeExtent(dd4hep::Detector& theDetector);
 
 // helper function to get track states
 edm4hep::TrackState getTrackStateAt(const edm4hep::Track& trk, int location);

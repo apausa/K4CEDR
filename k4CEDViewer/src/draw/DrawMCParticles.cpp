@@ -17,6 +17,7 @@
  * limitations under the License.
  */
 
+#include "DetectorUtils.h"
 #include "HelixGeometry.h"
 #include "edm4hep/MCParticleCollection.h"
 #include "k4FWCore/Consumer.h"

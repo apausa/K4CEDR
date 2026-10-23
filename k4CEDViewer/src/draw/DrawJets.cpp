@@ -18,6 +18,7 @@
  */
 
 #include "ColorMap.h"
+#include "DetectorUtils.h"
 #include "edm4hep/ReconstructedParticleCollection.h"
 #include "k4CEDColors.h"
 #include "k4FWCore/Consumer.h"
